@@ -1,0 +1,14 @@
+{
+    "clients": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "creditScore": 750
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "creditScore": 620
+      }
+    ]
+}
