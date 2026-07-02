@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from 'react'
+import ClientList from './ClientList'
+import AddClientForm from './AddClientForm'
 import './App.css'
 
 interface LoanRateResponse {
@@ -10,6 +12,7 @@ function App() {
   const [creditScore, setCreditScore] = useState('')
   const [result, setResult] = useState<LoanRateResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [clientListVersion, setClientListVersion] = useState(0)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -52,6 +55,12 @@ function App() {
       )}
 
       {error && <p className="error">{error}</p>}
+
+      <h2>Add Client</h2>
+      <AddClientForm onClientAdded={() => setClientListVersion((v) => v + 1)} />
+
+      <h2>Clients</h2>
+      <ClientList key={clientListVersion} />
     </div>
   )
 }
