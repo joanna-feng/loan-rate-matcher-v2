@@ -1,0 +1,44 @@
+.app {
+  max-width: 400px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  font-size: 16px;
+  padding: 8px;
+  width: 160px;
+}
+
+button {
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 24px;
+  font-size: 18px;
+}
+
+.error {
+  margin-top: 24px;
+  color: #d33;
+}
