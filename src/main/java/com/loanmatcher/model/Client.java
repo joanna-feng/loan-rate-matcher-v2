@@ -36,4 +36,8 @@ public class Client {
         return creditScore;
     }
 
+    public void setCreditScore(int creditScore) {
+        this.creditScore = creditScore;
+    }
+
 }
