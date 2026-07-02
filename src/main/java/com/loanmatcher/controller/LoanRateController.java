@@ -1,6 +1,5 @@
 package com.loanmatcher.controller;
 
-import com.loanmatcher.model.Client;
 import com.loanmatcher.service.LoanRateService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +16,7 @@ public class LoanRateController {
 
     @GetMapping("/api/loan-rate")
     public LoanRateResponse getLoanRate(@RequestParam int creditScore) {
-        Client client = new Client(0, "", creditScore);
-        double loanRate = loanRateService.calculateLoanRate(client);
+        double loanRate = loanRateService.calculateLoanRate(creditScore);
         return new LoanRateResponse(creditScore, loanRate);
     }
 
