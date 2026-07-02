@@ -24,3 +24,6 @@ target/
 
 ### macOS ###
 .DS_Store
+
+### Reference-only original project (not for upload) ###
+original-swing-project/
