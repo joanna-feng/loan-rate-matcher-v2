@@ -1,7 +1,0 @@
-com/loanmatcher/model/Client.class
-com/loanmatcher/controller/HealthController.class
-com/loanmatcher/controller/LoanRateController.class
-com/loanmatcher/LoanRateMatcherApplication.class
-com/loanmatcher/controller/LoanRateController$LoanRateResponse.class
-com/loanmatcher/service/LoanRateService.class
-com/loanmatcher/controller/HealthController$HealthResponse.class
