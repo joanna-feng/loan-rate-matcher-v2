@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ClientRow from './ClientRow'
+import { API_BASE_URL } from './config'
 
 export interface Client {
   id: number
@@ -13,7 +14,7 @@ function ClientList() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/clients')
+    fetch(`${API_BASE_URL}/api/clients`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`)

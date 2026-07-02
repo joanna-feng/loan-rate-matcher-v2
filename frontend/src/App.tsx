@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import ClientList from './ClientList'
 import AddClientForm from './AddClientForm'
+import { API_BASE_URL } from './config'
 import './App.css'
 
 interface LoanRateResponse {
@@ -21,7 +22,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/loan-rate?creditScore=${creditScore}`,
+        `${API_BASE_URL}/api/loan-rate?creditScore=${creditScore}`,
       )
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`)

@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { API_BASE_URL } from './config'
 
 interface AddClientFormProps {
   onClientAdded: () => void
@@ -14,7 +15,7 @@ function AddClientForm({ onClientAdded }: AddClientFormProps) {
     setError(null)
 
     try {
-      const response = await fetch('http://localhost:8080/api/clients', {
+      const response = await fetch(`${API_BASE_URL}/api/clients`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, creditScore: Number(creditScore) }),

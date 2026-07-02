@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Client } from './ClientList'
+import { API_BASE_URL } from './config'
 
 interface ClientRowProps {
   client: Client
@@ -14,7 +15,7 @@ function ClientRow({ client, onUpdated, onDeleted }: ClientRowProps) {
   async function handleUpdate() {
     setError(null)
     try {
-      const response = await fetch(`http://localhost:8080/api/clients/${client.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/clients/${client.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ creditScore: Number(creditScore) }),
@@ -32,7 +33,7 @@ function ClientRow({ client, onUpdated, onDeleted }: ClientRowProps) {
   async function handleDelete() {
     setError(null)
     try {
-      const response = await fetch(`http://localhost:8080/api/clients/${client.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/clients/${client.id}`, {
         method: 'DELETE',
       })
       if (!response.ok) {

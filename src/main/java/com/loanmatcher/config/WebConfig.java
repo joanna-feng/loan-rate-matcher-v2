@@ -14,7 +14,9 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:5173")
+                        .allowedOrigins(
+                                "http://localhost:5173",
+                                "http://loan-rate-matcher-frontend-293033346344.s3-website-us-west-2.amazonaws.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
