@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import ClientRow from './ClientRow'
 
-interface Client {
+export interface Client {
   id: number
   name: string
   creditScore: number
@@ -23,31 +24,41 @@ function ClientList() {
       .catch(() => setError('Could not load clients. Is the backend running?'))
   }, [])
 
-  if (error) {
-    return <p className="error">{error}</p>
+  function handleUpdated(updated: Client) {
+    setClients((current) =>
+      current.map((client) => (client.id === updated.id ? updated : client)),
+    )
+  }
+
+  function handleDeleted(id: number) {
+    setClients((current) => current.filter((client) => client.id !== id))
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Credit Score</th>
-          <th>Loan Rate</th>
-        </tr>
-      </thead>
-      <tbody>
-        {clients.map((client) => (
-          <tr key={client.id}>
-            <td>{client.id}</td>
-            <td>{client.name}</td>
-            <td>{client.creditScore}</td>
-            <td>{client.loanRate}%</td>
+    <>
+      {error && <p className="error">{error}</p>}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Credit Score</th>
+            <th>Loan Rate</th>
+            <th></th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {clients.map((client) => (
+            <ClientRow
+              key={client.id}
+              client={client}
+              onUpdated={handleUpdated}
+              onDeleted={handleDeleted}
+            />
+          ))}
+        </tbody>
+      </table>
+    </>
   )
 }
 
