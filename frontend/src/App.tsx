@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Landmark, Percent, UserPlus, Users } from 'lucide-react'
 import ClientList from './ClientList'
 import AddClientForm from './AddClientForm'
 import { API_BASE_URL } from './config'
@@ -36,32 +37,54 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Loan Rate Matcher</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="creditScore">Credit Score</label>
-        <input
-          id="creditScore"
-          type="number"
-          value={creditScore}
-          onChange={(event) => setCreditScore(event.target.value)}
-          required
-        />
-        <button type="submit">Get Loan Rate</button>
-      </form>
+      <header className="app-header">
+        <Landmark size={22} strokeWidth={2} />
+        <h1>Loan Rate Matcher</h1>
+      </header>
 
-      {result && (
-        <p className="result">
-          Credit score {result.creditScore} qualifies for a rate of {result.loanRate}%
-        </p>
-      )}
+      <main className="app-main">
+        <section className="card">
+          <h2>
+            <Percent size={16} strokeWidth={2.5} />
+            Check Your Rate
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="creditScore">Credit Score</label>
+            <input
+              id="creditScore"
+              type="number"
+              value={creditScore}
+              onChange={(event) => setCreditScore(event.target.value)}
+              required
+            />
+            <button type="submit">Get Loan Rate</button>
+          </form>
 
-      {error && <p className="error">{error}</p>}
+          {result && (
+            <p className="result">
+              Credit score {result.creditScore} qualifies for a rate of {result.loanRate}%
+            </p>
+          )}
 
-      <h2>Add Client</h2>
-      <AddClientForm onClientAdded={() => setClientListVersion((v) => v + 1)} />
+          {error && <p className="error">{error}</p>}
+        </section>
 
-      <h2>Clients</h2>
-      <ClientList key={clientListVersion} />
+        <section className="card">
+          <h2>
+            <UserPlus size={16} strokeWidth={2.5} />
+            Add Client
+          </h2>
+          <AddClientForm onClientAdded={() => setClientListVersion((v) => v + 1)} />
+        </section>
+
+        <section className="card">
+          <h2>
+            <Users size={16} strokeWidth={2.5} />
+            Clients
+          </h2>
+          <ClientList key={clientListVersion} />
+        </section>
+      </main>
     </div>
   )
 }

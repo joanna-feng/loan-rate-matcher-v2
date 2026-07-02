@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Pencil, Trash2 } from 'lucide-react'
 import type { Client } from './ClientList'
 import { API_BASE_URL } from './config'
 
@@ -60,9 +61,11 @@ function ClientRow({ client, onUpdated, onDeleted }: ClientRowProps) {
         <td>{client.loanRate}%</td>
         <td className="row-actions">
           <button type="button" onClick={handleUpdate}>
+            <Pencil size={14} strokeWidth={2.5} />
             Update
           </button>
-          <button type="button" onClick={handleDelete}>
+          <button type="button" className="btn-delete" onClick={handleDelete}>
+            <Trash2 size={14} strokeWidth={2.5} />
             Delete
           </button>
         </td>
